@@ -17,18 +17,13 @@ namespace Client
         {
             var client = new HttpClient();
 
-            var response = await client.RequestTokenAsync(new TokenRequest
+            var response = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
             {
                 Address = "https://localhost:5001/connect/token",
-                GrantType = OidcConstants.GrantTypes.ClientCredentials,
 
                 ClientId = "client",
                 ClientSecret = "secret",
-
-                Parameters =
-                {
-                    { "scope", "api1" }
-                }
+                Scope = "api1"
             });
 
             if (response.IsError)
