@@ -1,0 +1,7 @@
+.vs
+/src/Core/bin/*
+/src/Core/obj/*
+/src/Infrastructure/bin/*
+/src/Infrastructure/obj/*
+*.db
+
