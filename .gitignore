@@ -3,5 +3,7 @@
 /src/Core/obj/*
 /src/Infrastructure/bin/*
 /src/Infrastructure/obj/*
+/src/IdentityServer/bin/*
+/src/IdentityServer/obj/*
 *.db
 
