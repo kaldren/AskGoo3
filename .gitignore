@@ -7,5 +7,7 @@
 /src/IdentityServer/obj/*
 /src/Client/bin/*
 /src/Client/obj/*
+/src/Api/bin/*
+/src/Api/obj/*
 *.db
 
