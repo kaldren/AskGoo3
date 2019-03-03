@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using AskGoo3.Core.Dtos;
 using AskGoo3.Core.Entities.User;
 using AskGoo3.Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
@@ -18,6 +19,11 @@ namespace AskGoo3.Api.Controllers
         {
             _context = context;
         }
+
+        //public IActionResult Authenticate([FromBody] LoginUserDto dto)
+        //{
+
+        //}
 
         [HttpGet]
         public async Task<User> Get()
