@@ -11,7 +11,9 @@ namespace Client
     {
         public static void Main(string[] args)
         {
-            MainAsync().GetAwaiter().GetResult();
+            MainAsync()
+                .GetAwaiter()
+                .GetResult();
         }
 
         private static async Task MainAsync()
@@ -36,6 +38,8 @@ namespace Client
 
             Console.WriteLine($"Token: ${response.Json}");
 
+            Console.WriteLine("*******************************");
+
             var client2 = new HttpClient();
             client2.SetBearerToken(token);
 
@@ -48,7 +52,8 @@ namespace Client
             else
             {
                 var content = await response2.Content.ReadAsStringAsync();
-                Console.WriteLine(JArray.Parse(content));
+                //Console.WriteLine(JArray.Parse(content));
+                Console.WriteLine(content);
             }
 
         }

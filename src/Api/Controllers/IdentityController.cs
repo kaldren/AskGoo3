@@ -11,11 +11,7 @@ namespace AskGoo3.Api.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return new JsonResult(from c in User.Claims
-                select new
-                {
-                    c.Type, c.Value
-                });
+            return Content("Hello World!");
         }
     }
 }
