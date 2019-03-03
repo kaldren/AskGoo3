@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AskGoo3.Infrastructure.Data;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -32,6 +34,10 @@ namespace AskGoo3.Api
                 .AddAuthorization()
                 .AddJsonFormatters()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddDbContext<DatabaseContext>(options =>
+                options.UseInMemoryDatabase("InMemoryDb"));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
