@@ -1,4 +1,6 @@
-﻿using AskGoo3.Infrastructure.Data;
+﻿using AskGoo3.Core.Interfaces;
+using AskGoo3.Infrastructure.Data;
+using AskGoo3.Infrastructure.Implementations.Repos;
 using AskGoo3.Services.Api;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -40,6 +42,7 @@ namespace AskGoo3.Api
                 options.UseInMemoryDatabase("InMemoryDb"));
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
         }
 

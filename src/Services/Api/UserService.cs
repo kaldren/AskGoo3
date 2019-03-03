@@ -1,27 +1,26 @@
 ﻿using AskGoo3.Core.Entities.User;
 using AskGoo3.Infrastructure.Data;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.EntityFrameworkCore;
 using System.Net.Http;
 using IdentityModel.Client;
 using System.Threading.Tasks;
+using AskGoo3.Core.Interfaces;
 
 namespace AskGoo3.Services.Api
 {
     public class UserService : IUserService
     {
-        private readonly DatabaseContext _context;
+        private readonly IUserRepository _userRepository;
 
-        public UserService(DatabaseContext context)
+        public UserService(IUserRepository userRepository)
         {
-            _context = context;
+            _userRepository = userRepository;
         }
 
         public async Task<User> AuthenticateAsync(string username, string password)
         {
-            var user = await _context.Users.SingleOrDefaultAsync(x => x.Username == username && x.Password == password);
+            var user = await _userRepository.SignInUserAsync(username, password);
 
             if (user == null)
             {
