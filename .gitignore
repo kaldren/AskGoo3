@@ -9,7 +9,7 @@
 /src/Client/obj/*
 /src/Api/bin/*
 /src/Api/obj/*
-/src/Serices/bin/*
+/src/Services/bin/*
 /src/Services/obj/*
 *.db
 
