@@ -2,21 +2,19 @@
 using System.Threading.Tasks;
 using AskGoo3.Core.Dtos;
 using AskGoo3.Core.Entities.User;
-using AskGoo3.Infrastructure.Data;
 using AskGoo3.Services.Api;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace AskGoo3.Api.Controllers
 {
     [Route("[controller]")]
     [Authorize]
-    public class IdentityController : Controller
+    public class AuthController : Controller
     {
         private readonly IUserService _userService;
 
-        public IdentityController(IUserService userService)
+        public AuthController(IUserService userService)
         {
             _userService = userService;
         }
