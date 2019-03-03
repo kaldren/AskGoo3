@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AskGoo3.Core.Entities.User;
 using AskGoo3.Core.Interfaces;
 using AskGoo3.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace AskGoo3.Infrastructure.Implementations
+namespace AskGoo3.Infrastructure.Implementations.Repos
 {
     public class UserRepository : IUserRepository
     {
