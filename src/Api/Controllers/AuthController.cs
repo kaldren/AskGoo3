@@ -33,11 +33,5 @@ namespace AskGoo3.Api.Controllers
             return Ok(user);
         }
 
-        [HttpGet]
-        public async Task<User> Get()
-        {
-            //return await _context.Users.SingleOrDefaultAsync(u => u.Id == 1);
-            return null;
-        }
     }
 }
