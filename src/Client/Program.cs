@@ -52,8 +52,8 @@ namespace Client
             else
             {
                 var content = await response2.Content.ReadAsStringAsync();
-                //Console.WriteLine(JArray.Parse(content));
                 Console.WriteLine(content);
+                //Console.WriteLine(content);
             }
 
         }

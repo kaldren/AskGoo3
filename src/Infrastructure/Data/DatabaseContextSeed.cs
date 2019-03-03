@@ -14,6 +14,7 @@ namespace AskGoo3.Infrastructure.Data
             {
                 new User
                 {
+                    Id = 1,
                     Username = "admin",
                     Password = "admin",
                     FirstName = "John",
@@ -22,6 +23,7 @@ namespace AskGoo3.Infrastructure.Data
                 }
                 , new User
                 {
+                    Id = 2,
                     Username = "kdrenski",
                     Password = "kdrenski",
                     FirstName = "Kaloyan",
