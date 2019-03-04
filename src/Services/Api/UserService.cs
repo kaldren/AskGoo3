@@ -1,7 +1,5 @@
 ﻿using AskGoo3.Core.Entities.User;
-using AskGoo3.Infrastructure.Data;
 using System;
-using Microsoft.EntityFrameworkCore;
 using System.Net.Http;
 using IdentityModel.Client;
 using System.Threading.Tasks;
