@@ -8,18 +8,19 @@ import { SignIn } from 'src/app/_models/signin';
 })
 export class SignInComponent implements OnInit {
 
-  signInUser: SignIn = {
-    username: '',
-    password: ''
-  };
+  signInUser: SignIn;
 
   constructor() { }
 
   ngOnInit() {
+    this.signInUser  = {
+      username: '',
+      password: ''
+    };
   }
 
   onSubmit() {
-    console.log('submit clicked!');
+    console.log(`Username: ${this.signInUser.username} Password: ${this.signInUser.password}`);
   }
 
 }
