@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AskGoo3.Core.Dtos
 {
-    public class LoginUserDto
+    public class SignInUserDto
     {
         public string Username { get; set; }
         public string Password { get; set; }

@@ -19,7 +19,7 @@ namespace AskGoo3.Web.Controllers.Api
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Authenticate([FromBody] LoginUserDto dto)
+        public async Task<IActionResult> Authenticate([FromBody] SignInUserDto dto)
         {
             var user = await _userService.AuthenticateAsync(dto.Username, dto.Password);
 
