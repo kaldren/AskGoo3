@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { SignIn } from '../_models/signin';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  public authenticateUser(userData: SignIn) {
+    return this.http.get('https://localhost:6001/api/auth');
+  }
 }

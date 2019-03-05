@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AskGoo3.Web.Controllers.Api
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [Authorize]
     public class AuthController : Controller
     {
@@ -15,6 +15,13 @@ namespace AskGoo3.Web.Controllers.Api
         public AuthController(IUserService userService)
         {
             _userService = userService;
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult SayHi()
+        {
+            return Json("Hello .NET Core!");
         }
 
         [HttpPost]
