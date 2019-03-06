@@ -23,7 +23,11 @@ export class SignInComponent implements OnInit {
   onSubmit() {
     this.authService.authenticateUser(this.signInUser)
       .subscribe((data) => {
-        console.log(data);
+        if (data['token']) {
+          localStorage.setItem('token', data['token']);
+        } else {
+        console.log('Invalid credentials.')
+        }
       });
   }
 
