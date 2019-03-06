@@ -11,6 +11,6 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   public authenticateUser(userData: SignIn) {
-    return this.http.get('https://localhost:6001/api/auth');
+    return this.http.post('https://localhost:6001/api/auth', userData);
   }
 }
