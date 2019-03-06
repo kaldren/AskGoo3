@@ -14,7 +14,7 @@ export function tokenGetter() {
 }
 
 @NgModule({
-  declarations: [HomeComponent, LayoutComponent],
+  declarations: [LayoutComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(dashboardRoutes),

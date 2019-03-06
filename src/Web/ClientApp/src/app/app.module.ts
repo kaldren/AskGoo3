@@ -11,6 +11,7 @@ import { SignInComponent } from './main/signin/signin.component';
 import { DashboardModule } from './main/dashboard/dashboard.module';
 import { AuthService } from './_services/auth.service';
 import { AuthGuardService } from './_guards/auth-guard.service';
+import { HomeComponent } from './main/dashboard/home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AuthGuardService } from './_guards/auth-guard.service';
     NavbarComponent,
     MainComponent,
     SignInComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

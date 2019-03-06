@@ -1,3 +1,9 @@
-<div id="main-signin-form">
-  <app-signin></app-signin>
+<div id="main-auth" *ngIf="isAuthenticated; else isNotAuthenticated">
+    <app-home></app-home>
 </div>
+
+<ng-template #isNotAuthenticated>
+    <div id="main-signin-form">
+        <app-signin></app-signin>
+      </div>
+</ng-template>
