@@ -10,7 +10,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable()
 export class AuthService {
 
-  @Output() isLoggedIn: EventEmitter<any> = new EventEmitter<any>();
+  @Output() isAuthenticatedEmitter: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
 
@@ -25,7 +25,7 @@ export class AuthService {
     const isTokenNotExpired = !this.jwtHelper.isTokenExpired(token);
 
     if (isTokenNotExpired) {
-      this.isLoggedIn.emit(true);
+      this.isAuthenticatedEmitter.emit(true);
       return true;
     }
 
@@ -33,7 +33,13 @@ export class AuthService {
   }
 
   getEmitter() {
-    return this.isLoggedIn;
+    return this.isAuthenticatedEmitter;
+  }
+
+  public signOutUser() {
+    console.log('sign out from service...');
+    localStorage.removeItem('token');
+    this.isAuthenticatedEmitter.emit(false);
   }
 
 }
