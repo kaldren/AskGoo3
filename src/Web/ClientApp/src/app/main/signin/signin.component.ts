@@ -25,11 +25,12 @@ export class SignInComponent implements OnInit {
   onSubmit() {
     this.authService.authenticateUser(this.signInUser)
       .subscribe((data) => {
-        if (data['token']) {
-          localStorage.setItem('token', data['token']);
+        if (data.token) {
+          console.log(data.token);
+          localStorage.setItem('token', data.token);
           this.router.navigate(['dashboard/home']);
         } else {
-        console.log('Invalid credentials.')
+        console.log('Invalid credentials.');
         }
       });
   }
