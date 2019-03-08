@@ -6,13 +6,14 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { SignIn } from '../_models/signin';
 import { DashboardModule } from '../main/dashboard/dashboard.module';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
 
   @Output() isAuthenticatedEmitter: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService, private router: Router) { }
 
   public authenticateUser(userData: SignIn) {
     return this.http.post('https://localhost:6001/api/auth', userData);
@@ -37,9 +38,9 @@ export class AuthService {
   }
 
   public signOutUser() {
-    console.log('sign out from service...');
     localStorage.removeItem('token');
     this.isAuthenticatedEmitter.emit(false);
+    this.router.navigate(['']);
   }
 
 }

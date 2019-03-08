@@ -16,6 +16,9 @@ export class MainComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.authService.getEmitter().subscribe((isAuthenticated) => {
+      this.isAuthenticated = isAuthenticated;
+    });
   }
 
 }
