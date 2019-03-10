@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
-import { LayoutComponent } from './layout/layout.component';
 import { dashboardRoutes } from './dashboard.routes';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuardService } from 'src/app/_guards/auth-guard.service';
