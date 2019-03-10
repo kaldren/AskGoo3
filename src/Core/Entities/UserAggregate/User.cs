@@ -1,9 +1,8 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Reflection.Metadata;
-using System.Text;
+using AskGoo3.Core.Entities.MessageAggregate;
 
-namespace AskGoo3.Core.Entities.User
+namespace AskGoo3.Core.Entities.UserAggregate
 {
     public class User : BaseEntity<int>
     {
@@ -12,5 +11,7 @@ namespace AskGoo3.Core.Entities.User
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Token { get; set; }
+
+        public ICollection<UserMessage> UserMessage { get; set; }
     }
 }

@@ -1,8 +1,8 @@
-﻿using AskGoo3.Core.Entities.User;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using AskGoo3.Core.Entities.UserAggregate;
 
 namespace AskGoo3.Core.Interfaces
 {

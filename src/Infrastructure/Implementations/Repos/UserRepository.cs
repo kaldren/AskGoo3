@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using AskGoo3.Core.Entities.User;
+using AskGoo3.Core.Entities.UserAggregate;
 using AskGoo3.Core.Interfaces;
 using AskGoo3.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;

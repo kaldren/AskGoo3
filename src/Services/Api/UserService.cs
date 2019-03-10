@@ -1,8 +1,8 @@
-﻿using AskGoo3.Core.Entities.User;
-using System;
+﻿using System;
 using System.Net.Http;
 using IdentityModel.Client;
 using System.Threading.Tasks;
+using AskGoo3.Core.Entities.UserAggregate;
 using AskGoo3.Core.Interfaces;
 
 namespace AskGoo3.Services.Api
