@@ -28,7 +28,7 @@ export class SignInComponent implements OnInit {
         if (data['token']) {
           console.log(data['token']);
           localStorage.setItem('token', data['token']);
-          this.router.navigate(['dashboard/home']);
+          this.router.navigate(['dashboard']);
         } else {
         console.log('Invalid credentials.');
         }

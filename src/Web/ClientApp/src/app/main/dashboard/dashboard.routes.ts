@@ -1,5 +1,4 @@
-import { Routes } from "@angular/router";
-import { LayoutComponent } from './layout/layout.component';
+import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AuthGuardService } from 'src/app/_guards/auth-guard.service';
 
@@ -9,11 +8,12 @@ import { AuthGuardService } from 'src/app/_guards/auth-guard.service';
 export const dashboardRoutes: Routes = [
   {
     path: 'dashboard',
-    component: LayoutComponent,
+    component: HomeComponent,
     canActivate: [AuthGuardService],
     children: [
+      { path: 'home', component: HomeComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent }
+      { path: '**', redirectTo: 'home', pathMatch: 'full' },
     ]
   }
 ];
