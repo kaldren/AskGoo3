@@ -137,5 +137,12 @@
       }
     }
   },
-  "defaultProject": "ClientApp"
+  "defaultProject": "ClientApp",
+  "schematics": {
+    "@schematics/angular": {
+      "component": {
+        "spec": false
+      }
+    }
+  }
 }

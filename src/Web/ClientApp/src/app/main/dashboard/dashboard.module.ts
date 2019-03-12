@@ -2,18 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
 import { dashboardRoutes } from './dashboard.routes';
 import { JwtModule } from '@auth0/angular-jwt';
-import { AuthGuardService } from 'src/app/_guards/auth-guard.service';
-import { AuthService } from 'src/app/_services/auth.service';
+import { MessagesComponent } from './messages/messages.component';
+import { HomeComponent } from './home/home.component';
+import { SettingsComponent } from './settings/settings.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    HomeComponent,
+    MessagesComponent,
+    SettingsComponent
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(dashboardRoutes),

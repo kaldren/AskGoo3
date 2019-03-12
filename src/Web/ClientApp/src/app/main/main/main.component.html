@@ -1,5 +1,5 @@
 <div id="main-auth" *ngIf="isAuthenticated; else isNotAuthenticated">
-    <app-home></app-home>
+  <router-outlet id="inside-main"></router-outlet>
 </div>
 
 <ng-template #isNotAuthenticated>
