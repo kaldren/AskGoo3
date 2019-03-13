@@ -9,6 +9,6 @@ export class MessageService {
   constructor(private http: HttpClient) { }
 
   public getAllMessagesByUserId() {
-
+    return this.http.get('/api/messages');
   }
 }
