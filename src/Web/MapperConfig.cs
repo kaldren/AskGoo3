@@ -15,6 +15,7 @@ namespace AskGoo3.Web
         {
             CreateMap<User, UserDto>();
             CreateMap<Message, MessageDto>();
+            CreateMap<List<Message>, List<MessageDto>>();
         }
     }
 }

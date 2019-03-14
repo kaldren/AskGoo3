@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AskGoo3.Core.Dtos;
 using AskGoo3.Infrastructure.Data;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,10 +16,12 @@ namespace AskGoo3.Web.Controllers.Api
     public class MessagesController : Controller
     {
         private readonly DatabaseContext _context;
+        private readonly IMapper _mapper;
 
-        public MessagesController(DatabaseContext context)
+        public MessagesController(DatabaseContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -29,7 +33,9 @@ namespace AskGoo3.Web.Controllers.Api
                 .Where(x => x.Sender == user)
                 .Include(x => x.Recipient);
 
-            return Json(messages);
+            var messageDto = _mapper.Map<List<MessageDto>>(messages);
+
+            return Json(messageDto);
         }
     }
 }

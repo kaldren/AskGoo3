@@ -9,7 +9,7 @@ namespace AskGoo3.Core.Dtos
     {
         public int Id { get; set; }
         public string Content { get; set; }
-        public UserDto Recipient { get; set; }
-        public UserDto Sender { get; set; }
+        //public UserDto Recipient { get; set; }
+        //public UserDto Sender { get; set; }
     }
 }
