@@ -17,7 +17,7 @@ export class MessagesComponent implements OnInit {
   getAllMessagesByUserId() {
     this.messageService.getAllMessagesByUserId().subscribe((data) => {
       console.log(data);
-    })
+    });
   }
 
 }

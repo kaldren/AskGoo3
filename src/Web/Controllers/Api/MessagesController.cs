@@ -25,7 +25,9 @@ namespace AskGoo3.Web.Controllers.Api
         {
             var user = _context.Users.SingleOrDefault(x => x.Username == "kdrenski");
 
-            var messages = _context.Messages.Where(x => x.Sender == user);
+            var messages = _context.Messages
+                .Where(x => x.Sender == user)
+                .Include(x => x.Recipient);
 
             return Json(messages);
         }
