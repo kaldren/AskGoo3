@@ -2,6 +2,7 @@ using AskGoo3.Core.Interfaces;
 using AskGoo3.Infrastructure.Data;
 using AskGoo3.Infrastructure.Implementations.Repos;
 using AskGoo3.Services.Api;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -50,6 +51,8 @@ namespace AskGoo3.Web
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddAutoMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
