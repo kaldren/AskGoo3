@@ -34,7 +34,7 @@ namespace AskGoo3.Web.Controllers.Api
                 .Include(x => x.Recipient);
 
             var messageDto = _mapper.Map<List<MessageDto>>(messages);
-
+            
             return Json(messageDto);
         }
     }

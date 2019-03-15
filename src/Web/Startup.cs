@@ -36,6 +36,11 @@ namespace AskGoo3.Web
 
             services
                 .AddMvcCore()
+                .AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.ContractResolver = 
+                        new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
+                })
                 .AddAuthorization()
                 .AddJsonFormatters()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
