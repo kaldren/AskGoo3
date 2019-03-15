@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'src/app/_services/message/message.service';
+import { Message } from 'src/app/_models/message';
 
 @Component({
   selector: 'app-messages',
@@ -7,6 +8,8 @@ import { MessageService } from 'src/app/_services/message/message.service';
   styleUrls: ['./messages.component.less']
 })
 export class MessagesComponent implements OnInit {
+
+  messages: any = []; // Todo: Use Message type
 
   constructor(private messageService: MessageService) { }
 
@@ -17,6 +20,7 @@ export class MessagesComponent implements OnInit {
   getAllMessagesByUserId() {
     this.messageService.getAllMessagesByUserId().subscribe((data) => {
       console.log(data);
+      this.messages = data;
     });
   }
 
