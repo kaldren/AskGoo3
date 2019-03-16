@@ -25,6 +25,9 @@ namespace AskGoo3.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Settings
+            services.Configure<ApiSettings>(Configuration.GetSection(("ApiSettings")));
+
             services
                 .AddAuthentication("Bearer")
                 .AddIdentityServerAuthentication(options =>

@@ -8,6 +8,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace AskGoo3.Web.Controllers.Api
 {
@@ -15,13 +16,21 @@ namespace AskGoo3.Web.Controllers.Api
     //[Authorize]
     public class MessagesController : Controller
     {
+        private readonly IOptions<ApiSettings> _appSettings;
         private readonly DatabaseContext _context;
         private readonly IMapper _mapper;
 
-        public MessagesController(DatabaseContext context, IMapper mapper)
+        // Settings
+        private readonly int _messageContentLength;
+
+        public MessagesController(IOptions<ApiSettings> appSettings, DatabaseContext context, IMapper mapper)
         {
+            _appSettings = appSettings;
             _context = context;
             _mapper = mapper;
+
+            // App Settings
+            _messageContentLength = appSettings.Value.ShowAllUserMessagesContentLength;
         }
 
         [HttpGet]
@@ -31,9 +40,19 @@ namespace AskGoo3.Web.Controllers.Api
 
             var messages = _context.Messages
                 .Where(x => x.Sender == user)
-                .Include(x => x.Recipient);
+                .Include(x => x.Recipient)
+                .ToArray();
 
             var messageDto = _mapper.Map<List<MessageDto>>(messages);
+
+            // Return max content allowed by Config settings
+            foreach (var message in messageDto)
+            {
+                if (message.Content.Length > _messageContentLength)
+                {
+                    message.Content = message.Content.Substring(0, _messageContentLength);
+                }
+            }
             
             return Json(messageDto);
         }
