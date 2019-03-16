@@ -33,8 +33,24 @@ namespace AskGoo3.Web.Controllers.Api
             _messageContentLength = appSettings.Value.ShowAllUserMessagesContentLength;
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetSingleMessage([FromRoute] int id)
+        {
+            var user = _context.Users.SingleOrDefault(x => x.Username == "kdrenski");
+
+            var message = _context.Messages
+                .Where(x => x.Id == id && x.Sender.Username == user.Username)
+                .Include(x => x.Sender)
+                .Include(x => x.Recipient)
+                .SingleOrDefault();
+
+            var messageDto = _mapper.Map<MessageDto>(message);
+
+            return Json(messageDto);
+        }
+
         [HttpGet]
-        public IActionResult ShowAllUserMessages()
+        public IActionResult GetAllMessages()
         {
             var user = _context.Users.SingleOrDefault(x => x.Username == "kdrenski");
 
@@ -43,10 +59,10 @@ namespace AskGoo3.Web.Controllers.Api
                 .Include(x => x.Recipient)
                 .ToArray();
 
-            var messageDto = _mapper.Map<List<MessageDto>>(messages);
+            var messagesListDto = _mapper.Map<List<MessageDto>>(messages);
 
             // Return max content allowed by Config settings
-            foreach (var message in messageDto)
+            foreach (var message in messagesListDto)
             {
                 if (message.Content.Length > _messageContentLength)
                 {
@@ -54,7 +70,7 @@ namespace AskGoo3.Web.Controllers.Api
                 }
             }
             
-            return Json(messageDto);
+            return Json(messagesListDto);
         }
     }
 }

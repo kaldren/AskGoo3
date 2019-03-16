@@ -11,4 +11,8 @@ export class MessageService {
   public getAllMessagesByUserId() {
     return this.http.get('/api/messages');
   }
+
+  public getSingleMessageById(id: number) {
+    return this.http.get('api/messages/' + id);
+  }
 }
