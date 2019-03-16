@@ -7,6 +7,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { MessagesComponent } from './messages/messages.component';
 import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
+import { MessageComponent } from './messages/message/message.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -16,7 +17,8 @@ export function tokenGetter() {
   declarations: [
     HomeComponent,
     MessagesComponent,
-    SettingsComponent
+    SettingsComponent,
+    MessageComponent
   ],
   imports: [
     CommonModule,
