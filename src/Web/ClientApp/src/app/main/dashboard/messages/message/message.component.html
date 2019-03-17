@@ -1,6 +1,6 @@
 <div class="component-message">
   <div class="my-3 p-3 bg-white rounded shadow-sm">
-    <h4 class="pb-2 mb-0">{{message?.sender.username}}</h4>
+    <h4 class="pb-2 mb-0"><a [routerLink]="['/dashboard/profile', message.sender.id]">{{message?.sender.username}}</a></h4>
     <h6 class="message-date">({{message?.dateTimeFormatted}})</h6>
     <div class="media text-muted pt-3">
       <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
