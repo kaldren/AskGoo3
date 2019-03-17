@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { MessageService } from 'src/app/_services/message/message.service';
 import { Message } from 'src/app/_models/message';
 
@@ -18,7 +19,8 @@ export class MessageComponent implements OnInit, OnDestroy {
   replyBtnClicked: boolean;
 
   constructor(private route: ActivatedRoute,
-              private messageService: MessageService) { }
+              private messageService: MessageService,
+              private _location: Location) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -38,6 +40,10 @@ export class MessageComponent implements OnInit, OnDestroy {
   toggleReply() {
     this.replyBtnClicked = !this.replyBtnClicked;
     return this.replyBtnClicked;
+  }
+
+  backClicked() {
+    this._location.back();
   }
 
   ngOnDestroy() {

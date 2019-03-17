@@ -20,7 +20,8 @@
 
     <small *ngIf="!replyBtnClicked" class="d-block text-right mt-3">
       <button type="button" class="btn btn-primary mr-3" (click)="toggleReply()">Reply</button>
-      <button type="button" class="btn btn-danger">Delete</button>
+      <button type="button" class="btn btn-danger mr-3">Delete</button>
+      <button type="button" class="btn btn-secondary" (click)="this.backClicked()">Back</button>
     </small>
   </div>
 </div>
