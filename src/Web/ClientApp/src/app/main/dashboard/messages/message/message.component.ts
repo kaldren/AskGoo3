@@ -15,6 +15,8 @@ export class MessageComponent implements OnInit, OnDestroy {
   message: any;
   private sub: any;
 
+  replyBtnClicked: boolean;
+
   constructor(private route: ActivatedRoute,
               private messageService: MessageService) { }
 
@@ -23,6 +25,7 @@ export class MessageComponent implements OnInit, OnDestroy {
       this.getSingleMessageByUserId(+params.id);
     });
 
+    this.replyBtnClicked = false;
   }
 
   getSingleMessageByUserId(id: number) {
@@ -30,6 +33,11 @@ export class MessageComponent implements OnInit, OnDestroy {
     .subscribe((data) => {
       this.message = data;
     });
+  }
+
+  toggleReply() {
+    this.replyBtnClicked = !this.replyBtnClicked;
+    return this.replyBtnClicked;
   }
 
   ngOnDestroy() {

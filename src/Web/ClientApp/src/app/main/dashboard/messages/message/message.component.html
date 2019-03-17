@@ -2,16 +2,27 @@
   <div class="component-message">
     <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h4 class="border-bottom border-gray pb-2 mb-0">{{message?.sender.username}}</h4>
-        <h6>({{message?.dateTimeFormatted}})</h6>
+        <h6 class="message-date">({{message?.dateTimeFormatted}})</h6>
         <div class="media text-muted pt-3">
           <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
             {{message?.content}}
           </p>
         </div>
-        <small class="d-block text-right mt-3">
-          <button type="button" class="btn btn-primary mr-3">Reply</button>
-          <button type="button" class="btn btn-danger">Delete</button>
-        </small>
+        <div *ngIf="replyBtnClicked" class="message-reply">
+          <div class="input-group">
+            <textarea class="form-control" aria-label="With textarea"></textarea>
+          </div>
+        </div>
+
+          <small *ngIf="replyBtnClicked" class="d-block text-right mt-3">
+            <button type="button" class="btn btn-success mr-3">Send</button>
+            <button type="button" class="btn btn-danger" (click)="toggleReply()">Cancel</button>
+          </small>
+
+          <small *ngIf="!replyBtnClicked" class="d-block text-right mt-3">
+            <button type="button" class="btn btn-primary mr-3" (click)="toggleReply()">Reply</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+          </small>
       </div>
   </div>
 </div>
