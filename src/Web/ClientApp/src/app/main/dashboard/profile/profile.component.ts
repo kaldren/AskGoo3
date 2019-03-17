@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProfileService } from 'src/app/_services/profile/profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,21 +9,22 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   id: number;
-  content: string;
-  message: any;
+  profile: any;
   private sub: any;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private profileService: ProfileService) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      // this.getSingleMessageByUserId(+params.id);
-      this.id = +params.id;
+      this.getSingleMessageByUserId(+params.id);
     });
   }
 
-  getSingleProfileById(id: number) {
-
+  getSingleMessageByUserId(id: number) {
+    this.profileService.getSingleProfileById(id)
+    .subscribe((data) => {
+      this.profile = data;
+    });
   }
 
   ngOnDestroy() {

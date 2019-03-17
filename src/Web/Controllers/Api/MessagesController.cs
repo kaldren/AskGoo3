@@ -17,7 +17,7 @@ namespace AskGoo3.Web.Controllers.Api
     public class MessagesController : Controller
     {
         private readonly IOptions<ApiSettings> _appSettings;
-        private readonly DatabaseContext _context;
+        private readonly DatabaseContext _dbContext;
         private readonly IMapper _mapper;
 
         // Settings
@@ -26,20 +26,20 @@ namespace AskGoo3.Web.Controllers.Api
         public MessagesController(IOptions<ApiSettings> appSettings, DatabaseContext context, IMapper mapper)
         {
             _appSettings = appSettings;
-            _context = context;
+            _dbContext = context;
             _mapper = mapper;
 
             // App Settings
             _messageContentLength = appSettings.Value.ShowAllUserMessagesContentLength;
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetSingleMessage([FromRoute] int id)
+        [HttpGet("{messageId}")]
+        public IActionResult GetSingleMessage([FromRoute] int messageId)
         {
-            var user = _context.Users.SingleOrDefault(x => x.Username == "kdrenski");
+            var user = _dbContext.Users.SingleOrDefault(x => x.Username == "kdrenski");
 
-            var message = _context.Messages
-                .Where(x => x.Id == id && x.Sender.Username == user.Username)
+            var message = _dbContext.Messages
+                .Where(x => x.Id == messageId && x.Sender.Username == user.Username)
                 .Include(x => x.Sender)
                 .Include(x => x.Recipient)
                 .SingleOrDefault();
@@ -52,9 +52,9 @@ namespace AskGoo3.Web.Controllers.Api
         [HttpGet]
         public IActionResult GetAllMessages()
         {
-            var user = _context.Users.SingleOrDefault(x => x.Username == "kdrenski");
+            var user = _dbContext.Users.SingleOrDefault(x => x.Username == "kdrenski");
 
-            var messages = _context.Messages
+            var messages = _dbContext.Messages
                 .Where(x => x.Sender == user)
                 .Include(x => x.Recipient)
                 .ToArray();

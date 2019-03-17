@@ -9,6 +9,6 @@ export class ProfileService {
   constructor(private http: HttpClient) { }
 
   getSingleProfileById(id: number) {
-
+    return this.http.get('api/profile/' + id);
   }
 }
