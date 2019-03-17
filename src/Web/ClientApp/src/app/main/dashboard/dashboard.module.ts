@@ -8,6 +8,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
 import { MessageComponent } from './messages/message/message.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -18,7 +19,8 @@ export function tokenGetter() {
     HomeComponent,
     MessagesComponent,
     SettingsComponent,
-    MessageComponent
+    MessageComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
